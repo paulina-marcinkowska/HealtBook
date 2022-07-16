@@ -18,11 +18,11 @@ namespace KsiazeczkaZdrowia
         [XmlElement(ElementName = "weight")]
         public int Waga { get; set; }
         [XmlElement(ElementName = "medicalHistory")]
-        public List<Wizyta> HistoriaChoroby { get; set; }
+        public List<Visit> HistoriaChoroby { get; set; }
         [XmlElement(ElementName = "clinic")]
-        public Klinika Klinika { get; set; }
+        public Clinic Clinic { get; set; }
         [XmlElement(ElementName = "visit")]
-        public DateTime Wizyta { get; set; }
+        public DateTime Visit { get; set; }
 
         public Zwierze(string imie, DateTime dataUrodzenia)
         {
@@ -33,16 +33,16 @@ namespace KsiazeczkaZdrowia
         {
         }
 
-        public void DodajWizyte()
+        public void AddVisit()
         {
             try
             {
-                int czyDodac = int.Parse(Console.ReadLine());
-                if (czyDodac == 1)
+                int orAdd = int.Parse(Console.ReadLine());
+                if (orAdd == 1)
                 {
-                    DateTime nowaWizyta = new DateTime();
-                    nowaWizyta = DateTime.Parse(Console.ReadLine());
-                    Wizyta = nowaWizyta;
+                    DateTime nVisit = new DateTime();
+                    nVisit = DateTime.Parse(Console.ReadLine());
+                    Visit = nVisit;
                 }
             }
             catch (Exception e)

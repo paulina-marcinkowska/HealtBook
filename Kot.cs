@@ -32,11 +32,11 @@ namespace KsiazeczkaZdrowia
             Console.WriteLine("data urodzenia: " + DataUrodzenia);
             Console.WriteLine("waga: " + Waga);
             Console.WriteLine("odrobaczanie: " + Odrobaczanie);
-            Console.WriteLine("wizyta: " + Wizyta);
-            Console.WriteLine("klinika: " + Klinika.Nazwa);
-            foreach (Wizyta element in HistoriaChoroby)
+            Console.WriteLine("wizyta: " + Visit);
+            Console.WriteLine("klinika: " + Clinic.Name);
+            foreach (Visit element in HistoriaChoroby)
             {
-                Console.WriteLine(element.Rozpoznanie);
+                Console.WriteLine(element.Diagnosis);
             }
         }
         public void EdytujDaneKota()
@@ -58,21 +58,21 @@ namespace KsiazeczkaZdrowia
         {
             try
             {
-                int czyDodac = int.Parse(Console.ReadLine());
+                int orAdd = int.Parse(Console.ReadLine());
 
-                if (czyDodac == 1)
+                if (orAdd == 1)
                 {
                     Console.WriteLine("Podaj date wizyty: ");
-                    DateTime nDataWizyty = new DateTime();
-                    nDataWizyty = DateTime.Parse(Console.ReadLine());
+                    DateTime nDateOfVisit = new DateTime();
+                    nDateOfVisit = DateTime.Parse(Console.ReadLine());
                     Console.WriteLine("Podaj nazwe kliniki: ");
-                    string nKlinika = Console.ReadLine();
+                    string nClinic = Console.ReadLine();
                     Console.WriteLine("Podaj adres kliniki: ");
-                    string nAdres = Console.ReadLine();
+                    string nAddress = Console.ReadLine();
                     Console.WriteLine("Podaj nazwisko lekarza: ");
-                    string nLekarz = Console.ReadLine();
-                    Wizyta nWizyta = new Wizyta(nKlinika, nAdres, nAdres, nDataWizyty);
-                    HistoriaChoroby.Add(nWizyta);
+                    string nDoctor = Console.ReadLine();
+                    Visit nVisit = new Visit(nClinic, nAddress, nDoctor, nDateOfVisit);
+                    HistoriaChoroby.Add(nVisit);
                 }
             }
             catch (Exception e)

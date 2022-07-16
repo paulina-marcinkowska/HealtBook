@@ -9,67 +9,67 @@ using System.Xml.Serialization;
 namespace KsiazeczkaZdrowia
 {
     [XmlRoot(ElementName = "clinic")]
-    public class Klinika
+    public class Clinic
     {
         [XmlElement(ElementName = "title")]
-        public string Nazwa { get; set; }
+        public string Name { get; set; }
         [XmlElement(ElementName = "address")]
-        public string Adres { get; set; }
+        public string Address { get; set; }
         [XmlElement(ElementName = "contact")]
-        public List<string> Kontakt { get; set; }
+        public List<string> Contact { get; set; }
         [XmlElement(ElementName = "service")]
-        public List<string> UslugiWeterynaryjne { get; set; }
+        public List<string> Service { get; set; }
         [XmlElement(ElementName = "doctors")]
-        public List<string> Lekarze { get; set; }
+        public List<string> Doctors { get; set; }
 
-        public Klinika(string nazwa, string adres)
+        public Clinic(string name, string address)
         {
-            this.Nazwa = nazwa;
-            this.Adres = adres;
+            this.Name = name;
+            this.Address = address;
         }
 
-        public Klinika() 
+        public Clinic() 
         { 
         }
 
-        public void WypiszDane() 
+        public void WriteOutData() 
         {
-            Console.WriteLine("Nazwa: " + Nazwa);
-            Console.WriteLine("Adres: " + Adres);
-            foreach(string element in Kontakt) 
+            Console.WriteLine("Nazwa: " + Name);
+            Console.WriteLine("Adres: " + Address);
+            foreach(string element in Contact) 
             {
                 Console.WriteLine(element);
             }
-            foreach(string element in UslugiWeterynaryjne) 
+            foreach(string element in Service) 
             {
                 Console.WriteLine(element);
             }
-            foreach(string element in Lekarze) 
+            foreach(string element in Doctors) 
             {
                 Console.WriteLine(element);
             }
         }
-        public void EdytujDaneKliniki()
+        public void EditClinicData()
         {
             try
             {
                 Console.WriteLine("Podaj adres: ");
-                Adres = Console.ReadLine();
+                Address = Console.ReadLine();
                 Console.WriteLine("Dodaj nowy kontakt: ");
-                string nowyKontakt = Console.ReadLine();
-                Kontakt.Add(nowyKontakt);
+                string nContact = Console.ReadLine();
+                Contact.Add(nContact);
                 Console.WriteLine("Dodaj nowe usługi: ");
-                string noweUslugi = Console.ReadLine();
-                UslugiWeterynaryjne.Add(noweUslugi);
+                string nService = Console.ReadLine();
+                Service.Add(nService);
                 Console.WriteLine("Dodaj nowego lekarza: ");
-                string nowyLekarz = Console.ReadLine();
-                Lekarze.Add(nowyLekarz);
+                string nDoctor = Console.ReadLine();
+                Doctors.Add(nDoctor);
             }
             catch (Exception e)
             {
 
                 Console.WriteLine(e.Message);
-                EdytujDaneKliniki();
+                EditClinicData();
             }
         }
     }

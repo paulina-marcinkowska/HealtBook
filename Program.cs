@@ -16,18 +16,18 @@ namespace KsiazeczkaZdrowia
     {
         static Pies blacky, kaprys, lucciano;
         static Kot diesel;
-        static Klinika animal, kaczor;
+        static Clinic animal, kaczor;
         static List<Pies> listaPsow = new List<Pies>();
         static List<Kot> listaKotow = new List<Kot>();
-        static List<Klinika> listaKlinik = new List<Klinika>();
-        static List<Wizyta> historiaChoroby = new List<Wizyta>();
+        static List<Clinic> listOfClinic = new List<Clinic>();
+        static List<Visit> historiaChoroby = new List<Visit>();
 
         static void Main(string[] args)
         {
 
             listaPsow = PobierzPsy();
             listaKotow = PobierzKoty();
-            listaKlinik = PobierzKliniki();
+            listOfClinic = DownloadClinics();
             SaveData();
 
             ObslugaMenu();
@@ -41,14 +41,14 @@ namespace KsiazeczkaZdrowia
             blacky.Waga = 20;
             blacky.Szczepienie = new DateTime(2021, 10, 01);
             blacky.Odrobaczanie = new DateTime(2021, 07, 28);
-            blacky.HistoriaChoroby = new List<Wizyta> ();
-            blacky.Klinika = animal;
+            blacky.HistoriaChoroby = new List<Visit> ();
+            blacky.Clinic = animal;
 
             Pies lucciano = new Pies("LUCCIANO", new DateTime(2015, 12, 24), "Lhasa Apso");
-            lucciano.Klinika = kaczor;
+            lucciano.Clinic = kaczor;
 
             Pies kaprys = new Pies("KAPRYS", new DateTime(2016, 02, 01), "Lhasa Apso");
-            kaprys.Klinika = kaczor;
+            kaprys.Clinic = kaczor;
             List<Pies> listaPsow = new List<Pies>();
             listaPsow.Add(blacky);
             listaPsow.Add(lucciano);
@@ -60,7 +60,7 @@ namespace KsiazeczkaZdrowia
         public static List<Kot> PobierzKoty()
         {
             Kot diesel = new Kot("DIESEL", new DateTime(2008, 01, 01), "Archangielska");
-            diesel.Klinika = kaczor;
+            diesel.Clinic = kaczor;
 
             List<Kot> listaKotow = new List<Kot>();
             listaKotow.Add(diesel);
@@ -69,23 +69,23 @@ namespace KsiazeczkaZdrowia
             
         }
 
-        public static List<Klinika> PobierzKliniki()
+        public static List<Clinic> DownloadClinics()
         {
-            Klinika animal = new Klinika("ANIMAL", "aaa");
-            Klinika kaczor = new Klinika("KACZOR", "kkk");
+            Clinic animal = new Clinic("ANIMAL", "aaa");
+            Clinic kaczor = new Clinic("KACZOR", "kkk");
 
-            List<Klinika> listaKlinik = new List<Klinika>();
-            listaKlinik.Add(animal);
-            listaKlinik.Add(kaczor);
+            List<Clinic> listOfClinic = new List<Clinic>();
+            listOfClinic.Add(animal);
+            listOfClinic.Add(kaczor);
 
-            return listaKlinik;
+            return listOfClinic;
         }
 
         public static void SaveData()
         {
             SaveXml.SaveDataXml(listaPsow);
             SaveXml.SaveDataXml(listaKotow);
-            SaveXml.SaveDataXml(listaKlinik);
+            SaveXml.SaveDataXml(listOfClinic);
         }
 
         private static int PokazMenu()
@@ -138,7 +138,7 @@ namespace KsiazeczkaZdrowia
                         break;
 
                     case 4:
-                        WybierzKlinike();
+                        SelectClinic();
                     break;
                 }
         }
@@ -191,7 +191,7 @@ namespace KsiazeczkaZdrowia
                         wybor = int.Parse(Console.ReadLine());
                         if (wybor == 1)
                         {
-                            blacky.DodajWizyte();
+                            blacky.AddsVisit();
                         }
                         else if (wybor == 2)
                         {
@@ -218,7 +218,7 @@ namespace KsiazeczkaZdrowia
                                 wybor = int.Parse(Console.ReadLine());
                                 if (wybor == 1)
                                 {
-                                    kaprys.DodajWizyte();
+                                    kaprys.AddVisit();
                                 }
                                 else if (wybor == 2)
                                 {
@@ -244,7 +244,7 @@ namespace KsiazeczkaZdrowia
                                 wybor = int.Parse(Console.ReadLine());
                                 if (wybor == 1)
                                 {
-                                    lucciano.DodajWizyte();
+                                    lucciano.AddVisit();
                                 }
                                 else if (wybor == 2)
                                 {
@@ -273,7 +273,7 @@ namespace KsiazeczkaZdrowia
                                 wybor = int.Parse(Console.ReadLine());
                                 if (wybor == 1)
                                 {
-                                    diesel.DodajWizyte();
+                                    diesel.AddVisit();
                                 }
                                 else if (wybor == 2)
                                 {
@@ -318,11 +318,11 @@ namespace KsiazeczkaZdrowia
                 int nowaWaga = int.Parse(Console.ReadLine());
                 x.Waga = nowaWaga;
                 Console.WriteLine("Podaj nazwe kliniki: ");
-                string nowaNazwa = Console.ReadLine();
-                x.Klinika.Nazwa = nowaNazwa;
+                string nName = Console.ReadLine();
+                x.Clinic.Name = nName;
                 Console.WriteLine("Podaj adres kliniki: ");
-                string nowyAdres = Console.ReadLine();
-                x.Klinika.Adres = nowyAdres;
+                string nAddress = Console.ReadLine();
+                x.Clinic.Address = nAddress;
                 Console.WriteLine("Podaj datę ostatniego szczepienia (rok, miesiąc, dzień) : ");
                 DateTime noweSzczepienie = new DateTime();
                 noweSzczepienie = DateTime.Parse(Console.ReadLine());
@@ -361,11 +361,11 @@ namespace KsiazeczkaZdrowia
             int nowaWaga = int.Parse(Console.ReadLine());
             y.Waga = nowaWaga;
             Console.WriteLine("Podaj nazwe kliniki: ");
-            string nowaNazwa = Console.ReadLine();
-            y.Klinika.Nazwa = nowaNazwa;
+            string nName = Console.ReadLine();
+            y.Clinic.Name = nName;
             Console.WriteLine("Podaj adres kliniki: ");
-            string nowyAdres = Console.ReadLine();
-            y.Klinika.Adres = nowyAdres;
+            string nAddress = Console.ReadLine();
+            y.Clinic.Address = nAddress;
             Console.WriteLine("Podaj datę ostatniego odrobaczania : ");
             DateTime noweOdrobaczanie = new DateTime();
             noweOdrobaczanie = DateTime.Parse(Console.ReadLine());
@@ -392,14 +392,14 @@ namespace KsiazeczkaZdrowia
               ObslugaMenu();
           }
         
-       private static void WybierzKlinike()
+       private static void SelectClinic()
         {
-            List<Klinika> listaKlinik = PobierzKliniki();
+            List<Clinic> listOfClinic = DownloadClinics();
 
             Console.WriteLine($"Aby zobaczyć profil kliniki podaj jej nazwę, jeżeli chcesz dodać nową klinikę wpisz 'nowa' {Environment.NewLine} Lista klinik: ");
-            foreach (Klinika element in listaKlinik)
+            foreach (Clinic element in listOfClinic)
             {
-                Console.WriteLine(element.Nazwa);
+                Console.WriteLine(element.Name);
             }
             try
             {
@@ -412,16 +412,16 @@ namespace KsiazeczkaZdrowia
                     switch (nazwaKliniki)
                     {
                         case "ANIMAL":
-                            animal.WypiszDane();
+                            animal.WriteOutData();
                             Console.WriteLine($"Co chcesz zrobic? {Environment.NewLine} 1. Edytuj dane kliniki {Environment.NewLine} 0.Powrót");
                             wybor = int.Parse(Console.ReadLine());
                             if (wybor == 1)
                                 {
-                                   animal.EdytujDaneKliniki();
+                                   animal.EditClinicData();
                                                             }
                                                          else if (wybor == 0)
                                                    {
-                                                        WybierzKlinike();
+                                                        SelectClinic();
                                                  }
                                                 else
                                              {
@@ -430,16 +430,16 @@ namespace KsiazeczkaZdrowia
                                         break;
 
                                     case "KACZOR":
-                                        kaczor.WypiszDane();
+                                        kaczor.WriteOutData();
                                      Console.WriteLine($"Co chcesz zrobic? {Environment.NewLine} 1. Edytuj dane kliniki {Environment.NewLine} 0. Powrót");
                                   wybor = int.Parse(Console.ReadLine());
                             if (wybor == 1)
                                 {
-                                                               kaczor.EdytujDaneKliniki();
+                                                               kaczor.EditClinicData();
                                        }
                                                        else if (wybor == 0)
                                                      {
-                                                       WybierzKlinike();
+                                                       SelectClinic();
                                              }
                                             else
                                            {
@@ -448,7 +448,7 @@ namespace KsiazeczkaZdrowia
                                 break;
 
                                     case "NOWA":
-                                    DodajKlinike();
+                                    AddClinic();
                                     break;
                                 }
                                                 }
@@ -456,7 +456,7 @@ namespace KsiazeczkaZdrowia
                                     {
 
                                     Console.WriteLine(e.Message);
-                                    WybierzKlinike();
+                                    SelectClinic();
                                 }
                             }
                                     catch (Exception e)
@@ -466,27 +466,27 @@ namespace KsiazeczkaZdrowia
                                     ObslugaMenu();
                                 }
                             }
-       private static Klinika DodajKlinike()
+       private static Clinic AddClinic()
                                     {
                                     Console.WriteLine("Podaj nazwę kliniki");
-                                    string nowaNazwa = Console.ReadLine();
+                                    string nName = Console.ReadLine();
                                     Console.WriteLine("Podaj adres: ");
-                                    string nowyAdres = Console.ReadLine();
+                                    string nAddress = Console.ReadLine();
                                     Console.WriteLine("Podaj numer kontaktowy: ");
-                                    string nowyKontakt = Console.ReadLine();
+                                    string nContact = Console.ReadLine();
                                     Console.WriteLine("Podaj usługi weterynaryjne: ");
-                                    string noweUslugi = Console.ReadLine();
+                                    string nService = Console.ReadLine();
                                     Console.WriteLine("Dodaj lekarza weterynarii");
-                                    string nowyLekarz = Console.ReadLine();
+                                    string nDoctor = Console.ReadLine();
 
-                                    Klinika z = new Klinika(nowaNazwa, nowyAdres);
-                                    z.Kontakt.Add(nowyKontakt);
-                                    z.UslugiWeterynaryjne.Add(noweUslugi);
-                                    z.Lekarze.Add(nowyLekarz);
+                                    Clinic z = new Clinic(nName, nAddress);
+                                    z.Contact.Add(nContact);
+                                    z.Service.Add(nService);
+                                    z.Doctors.Add(nDoctor);
             SaveData();
 
 
-            return new Klinika(nowaNazwa, nowyAdres);
+            return new Clinic(nName, nAddress);
 
         }
 

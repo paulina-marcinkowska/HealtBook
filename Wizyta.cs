@@ -8,23 +8,23 @@ using System.Xml.Serialization;
 namespace KsiazeczkaZdrowia
 {
     [XmlRoot(ElementName = "visit")]
-    public class Wizyta:Klinika
+    public class Visit:Clinic
     {
         [XmlElement(ElementName = "dateOfVisit")]
-        public DateTime DataWizyty { get; set; }
+        public DateTime DateOfVisit { get; set; }
         [XmlElement(ElementName = "doctor")]
-        public string Lekarz { get; set; }
+        public string Doctor { get; set; }
         [XmlElement(ElementName = "diagnosis")]
-        public string Rozpoznanie { get; set; }
+        public string Diagnosis { get; set; }
         [XmlElement(ElementName = "recommendation")]
-        public string Zalecenia { get; set; }
+        public string Recommendation { get; set; }
 
-        public Wizyta(string nazwa, string adres, string lekarz, DateTime dataWizyty) : base(nazwa, adres)
+        public Visit(string name, string address, string doctor, DateTime dateOfVisit) : base(name, address)
         {
-            this.Lekarz = lekarz;
-            this.DataWizyty = dataWizyty;
+            this.Doctor = doctor;
+            this.DateOfVisit = dateOfVisit;
         } 
-        public Wizyta():base()
+        public Visit():base()
         {
         }
 
