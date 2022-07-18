@@ -9,49 +9,49 @@ using System.Xml.Serialization;
 namespace KsiazeczkaZdrowia
 {
     [XmlRoot(ElementName = "dog")]
-    public class Pies:Zwierze
+    public class Dog:Animal
     {
         [XmlElement(ElementName = "breed")]
-        public string Rasa { get; set; }
+        public string Breed { get; set; }
         [XmlElement(ElementName = "vaccination")]
-        public DateTime Szczepienie { get; set; }
+        public DateTime Vaccination { get; set; }
         [XmlElement(ElementName = "deworming")]
-        public DateTime Odrobaczanie { get; set; }
+        public DateTime Deworming { get; set; }
 
-        public Pies(string imie, DateTime dataUrodzenia, string rasa):base(imie,dataUrodzenia)
+        public Dog(string name, DateTime dateOfBirth, string breed):base(name,dateOfBirth)
         {
-            this.Rasa = rasa;
+            this.Breed = breed;
         }
-        public Pies() : base()
+        public Dog() : base()
         {
         }
 
-        public void WypiszDane ()
+        public void WriteData (Dog e)
         {
-            Console.WriteLine("imię: " + Imie);
-            Console.WriteLine("rasa: " + Rasa);
-            Console.WriteLine("data urodzenia: " + DataUrodzenia);
-            Console.WriteLine("waga: " + Waga);
-            Console.WriteLine("szczepienie: " + Szczepienie);
-            Console.WriteLine("odrobaczanie: " + Odrobaczanie);
-            Console.WriteLine("wizyta: " + Wizyta);
-            Console.WriteLine("klinika: " + Klinika.Nazwa);
+            Console.WriteLine("imię: " + Name);
+            Console.WriteLine("rasa: " + Breed);
+            Console.WriteLine("data urodzenia: " + DateOfBirth);
+            Console.WriteLine("waga: " + Weight);
+            Console.WriteLine("szczepienie: " + Vaccination);
+            Console.WriteLine("odrobaczanie: " + Deworming);
+            Console.WriteLine("wizyta: " + Visit);
+            Console.WriteLine("klinika: " + Clinic.Name);
             Console.WriteLine("historia choroby: ");
-           foreach(Wizyta element in HistoriaChoroby) 
+           foreach(Visit element in MedicalHistory) 
            {
-                Console.WriteLine(element.Rozpoznanie);
+                Console.WriteLine(element.Diagnosis);
             }
         }
-        public void EdytujDanePsa()
+        public void EditDog()
         {
             try
             {
                 Console.WriteLine("Podaj wagę: ");
-                Waga = int.Parse(Console.ReadLine());
+                Weight = int.Parse(Console.ReadLine());
                 Console.WriteLine("Podaj datę ostatniego szczepienia (rok, miesiąc, dzień) : ");
-                Szczepienie = DateTime.Parse(Console.ReadLine());
+                Vaccination = DateTime.Parse(Console.ReadLine());
                 Console.WriteLine("Podaj datę ostatniego odrobaczania (rok, miesiąc, dzień : ");
-                Odrobaczanie = DateTime.Parse(Console.ReadLine());
+                Deworming = DateTime.Parse(Console.ReadLine());
             }
             catch (Exception e)
             {
@@ -59,32 +59,32 @@ namespace KsiazeczkaZdrowia
                 Console.WriteLine(e.Message);
             }
         }
-        public TimeSpan ZaIleSzczepienie(DateTime Szczepienie)
+        public TimeSpan HowMuchVaccination(DateTime Vaccination)
         {
-            DateTime dzis = new DateTime();
-            dzis = DateTime.Now.Date;
-            TimeSpan nastepneSzczepienie = dzis - Szczepienie;
-            return nastepneSzczepienie;
+            DateTime today = new DateTime();
+            today = DateTime.Now.Date;
+            TimeSpan nextVaccination = today - Vaccination;
+            return nextVaccination;
         }
-        public void DodajWizyte()
+        public void AddsVisit()
         {
             try
             {
-                int czyDodac = int.Parse(Console.ReadLine());
+                int orAdd = int.Parse(Console.ReadLine());
 
-                if (czyDodac == 1)
+                if (orAdd == 1)
                 {
                     Console.WriteLine("Podaj date wizyty: ");
-                    DateTime nDataWizyty = new DateTime();
-                    nDataWizyty = DateTime.Parse(Console.ReadLine());
+                    DateTime nDateOfVisit = new DateTime();
+                    nDateOfVisit = DateTime.Parse(Console.ReadLine());
                     Console.WriteLine("Podaj nazwe kliniki: ");
-                    string nKlinika = Console.ReadLine();
+                    string nClinic = Console.ReadLine();
                     Console.WriteLine("Podaj adres kliniki: ");
-                    string nAdres = Console.ReadLine();
+                    string nAddress = Console.ReadLine();
                     Console.WriteLine("Podaj nazwisko lekarza: ");
-                    string nLekarz = Console.ReadLine();
-                    Wizyta nWizyta = new Wizyta(nKlinika, nAdres, nAdres, nDataWizyty);
-                    HistoriaChoroby.Add(nWizyta);
+                    string nDoctor = Console.ReadLine();
+                    Visit nVisit = new Visit(nClinic, nAddress, nDoctor, nDateOfVisit);
+                    MedicalHistory.Add(nVisit);
                 }
             }
             catch (Exception e)

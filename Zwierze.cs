@@ -9,27 +9,27 @@ using System.Xml.Serialization;
 namespace KsiazeczkaZdrowia
 {
     [XmlRoot(ElementName = "animal")]
-    public class Zwierze
+    public class Animal
     {
         [XmlElement(ElementName = "name")]
-        public string Imie { get; set; }
+        public string Name { get; set; }
         [XmlElement(ElementName = "dateOfBirth")]
-        public DateTime DataUrodzenia { get; set; }
+        public DateTime DateOfBirth { get; set; }
         [XmlElement(ElementName = "weight")]
-        public int Waga { get; set; }
+        public int Weight { get; set; }
         [XmlElement(ElementName = "medicalHistory")]
-        public List<Visit> HistoriaChoroby { get; set; }
+        public List<Visit> MedicalHistory { get; set; }
         [XmlElement(ElementName = "clinic")]
         public Clinic Clinic { get; set; }
         [XmlElement(ElementName = "visit")]
         public DateTime Visit { get; set; }
 
-        public Zwierze(string imie, DateTime dataUrodzenia)
+        public Animal(string name, DateTime dateOfBirth)
         {
-            this.Imie = imie;
-            this.DataUrodzenia = dataUrodzenia;
+            this.Name = name;
+            this.DateOfBirth = dateOfBirth;
         }
-        public Zwierze()
+        public Animal()
         {
         }
 

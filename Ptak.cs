@@ -12,22 +12,22 @@ namespace KsiazeczkaZdrowia
 {
 
     [XmlRoot(ElementName = "bird")]
-    public class Ptak : Zwierze
+    public class Bird : Animal
     {
         [XmlElement(ElementName = "species")]
-        public string Gatunek { get; set; }
+        public string Species { get; set; }
 
         [XmlElement(ElementName = "breed")]
-        public string Rasa { get; set; }
+        public string Breed { get; set; }
 
-        public Ptak(string imie, DateTime dataUrodzenia, string gatunek, string rasa) : base(imie, dataUrodzenia)
+        public Bird(string name, DateTime dateOfBirth, string species, string breed) : base(name, dateOfBirth)
         {
-            this.Gatunek = gatunek;
-            this.Rasa = rasa;
+            this.Species = species;
+            this.Breed = breed;
 
         }
 
-        public Ptak():base()
+        public Bird():base()
         {
         }
 
@@ -49,7 +49,7 @@ namespace KsiazeczkaZdrowia
                     Console.WriteLine("Podaj nazwisko lekarza: ");
                     string nDoctor = Console.ReadLine();
                     Visit nVisit = new Visit(nClinic, nAddress, nDoctor, nDateOfVisit);
-                    HistoriaChoroby.Add(nVisit);
+                    MedicalHistory.Add(nVisit);
                 }
             }
             catch (Exception e)
