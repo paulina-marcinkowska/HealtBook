@@ -9,44 +9,44 @@ using System.Xml.Serialization;
 namespace KsiazeczkaZdrowia
 {
     [XmlRoot(ElementName = "cat")]
-    public class Kot:Zwierze
+    public class Cat:Animal
     {
         [XmlElement(ElementName = "breed")]
-        public string Rasa { get; set; }
+        public string Breed{ get; set; }
         [XmlElement(ElementName = "deworming")]
-        public DateTime Odrobaczanie { get; set; }
+        public DateTime Deworming { get; set; }
 
-        public Kot(string imie, DateTime dataUrodzenia, string rasa) : base(imie, dataUrodzenia)
+        public Cat(string name, DateTime dateOfBirth, string breed) : base(name, dateOfBirth)
         {
-            this.Rasa = rasa;
+            this.Breed = breed;
         }
 
-        public Kot() : base()
+        public Cat() : base()
         {
         }
 
-        public void WypiszDane(Kot e)
+        public void WriteData(Cat e)
         {
-            Console.WriteLine("imię: " + Imie);
-            Console.WriteLine("rasa: " + Rasa);
-            Console.WriteLine("data urodzenia: " + DataUrodzenia);
-            Console.WriteLine("waga: " + Waga);
-            Console.WriteLine("odrobaczanie: " + Odrobaczanie);
-            Console.WriteLine("wizyta: " + Wizyta);
-            Console.WriteLine("klinika: " + Klinika.Nazwa);
-            foreach (Wizyta element in HistoriaChoroby)
+            Console.WriteLine("imię: " + Name);
+            Console.WriteLine("rasa: " + Breed);
+            Console.WriteLine("data urodzenia: " + DateOfBirth);
+            Console.WriteLine("waga: " + Weight);
+            Console.WriteLine("odrobaczanie: " + Deworming);
+            Console.WriteLine("wizyta: " + Visit);
+            Console.WriteLine("klinika: " + Clinic.Name);
+            foreach (Visit element in MedicalHistory)
             {
-                Console.WriteLine(element.Rozpoznanie);
+                Console.WriteLine(element.Diagnosis);
             }
         }
-        public void EdytujDaneKota()
+        public void EditCat()
         {
             try
             {
                 Console.WriteLine("Podaj wagę: ");
-                Waga = int.Parse(Console.ReadLine());
+                Weight = int.Parse(Console.ReadLine());
                 Console.WriteLine("Podaj datę ostatniego odrobaczania (rok, miesiąc, dzień : ");
-                Odrobaczanie = DateTime.Parse(Console.ReadLine());
+                Deworming = DateTime.Parse(Console.ReadLine());
             }
             catch (Exception e)
             {
@@ -54,25 +54,25 @@ namespace KsiazeczkaZdrowia
                 Console.WriteLine(e.Message);
             }
         }
-        public void DodajWizyte()
+        public void AddVisit()
         {
             try
             {
-                int czyDodac = int.Parse(Console.ReadLine());
+                int orAdd = int.Parse(Console.ReadLine());
 
-                if (czyDodac == 1)
+                if (orAdd == 1)
                 {
                     Console.WriteLine("Podaj date wizyty: ");
-                    DateTime nDataWizyty = new DateTime();
-                    nDataWizyty = DateTime.Parse(Console.ReadLine());
+                    DateTime nDateOfVisit = new DateTime();
+                    nDateOfVisit = DateTime.Parse(Console.ReadLine());
                     Console.WriteLine("Podaj nazwe kliniki: ");
-                    string nKlinika = Console.ReadLine();
+                    string nClinic = Console.ReadLine();
                     Console.WriteLine("Podaj adres kliniki: ");
-                    string nAdres = Console.ReadLine();
+                    string nAddress = Console.ReadLine();
                     Console.WriteLine("Podaj nazwisko lekarza: ");
-                    string nLekarz = Console.ReadLine();
-                    Wizyta nWizyta = new Wizyta(nKlinika, nAdres, nAdres, nDataWizyty);
-                    HistoriaChoroby.Add(nWizyta);
+                    string nDoctor = Console.ReadLine();
+                    Visit nVisit = new Visit(nClinic, nAddress, nDoctor, nDateOfVisit);
+                    MedicalHistory.Add(nVisit);
                 }
             }
             catch (Exception e)
