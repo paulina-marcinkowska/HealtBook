@@ -59,12 +59,12 @@ namespace KsiazeczkaZdrowia
                 Console.WriteLine(e.Message);
             }
         }
-        public TimeSpan HowMuchVaccination(DateTime Vaccination)
+        public TimeSpan NextVaccination(DateTime Vaccination)
         {
             DateTime today = new DateTime();
             today = DateTime.Now.Date;
-            TimeSpan nextVaccination = today - Vaccination;
-            return nextVaccination;
+            TimeSpan nVaccination = today - Vaccination;
+            return nVaccination;
         }
         public void AddsVisit()
         {
