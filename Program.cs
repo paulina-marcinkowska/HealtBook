@@ -84,9 +84,13 @@ namespace KsiazeczkaZdrowia
 
         public static void SaveData()
         {
-            SaveXml.SaveDataXml(listOfClinics);
-            SaveXml.SaveDataXml(listOfCats);
-            SaveXml.SaveDataXml(listOfDogs);
+            string pDog = @"listaPsow.txt";
+            string pCat = @"listaKotow.txt";
+            string pClinic = @"listaKlinik.txt";
+
+            SaveXml.SaveDataXml(listOfClinics, pClinic);
+            SaveXml.SaveDataXml(listOfCats, pCat);
+            SaveXml.SaveDataXml(listOfDogs, pDog);
         }
 
         private static int ShowMenu()
@@ -151,10 +155,7 @@ namespace KsiazeczkaZdrowia
         }
 
         private static void SelectPatient() 
-    {
-            List<Dog> listOfDogs = GetDogs();
-            List<Cat> listOfCats = GetCats();
-
+    {            
             Console.WriteLine($"Lista pacjentów: {Environment.NewLine} 1.Psy: {Environment.NewLine} 2.Koty: ");
             int selectAnimal = int.Parse(Console.ReadLine());
 
@@ -186,7 +187,7 @@ namespace KsiazeczkaZdrowia
                     switch (patientsName)
                     {
                         case "BLACKY":
-                    blacky.WriteData(blacky);
+                    blacky.WriteData();
                     do
                     {
                         Console.WriteLine($"1. Dodaj wpis do historii choroby {Environment.NewLine} 2.Aktualizuj dane {Environment.NewLine} 0.Powrót");
@@ -212,9 +213,9 @@ namespace KsiazeczkaZdrowia
                                 break; 
 
                         case "KAPRYS":
-                    kaprys.WriteData(kaprys);
-
-                            do
+                    
+                        kaprys.WriteData();
+                        do
                             {
                                 Console.WriteLine($"1. Dodaj wpis do historii choroby {Environment.NewLine} 2.Aktualizuj dane {Environment.NewLine} 0.Powrót");
                                 choice = int.Parse(Console.ReadLine());
@@ -239,7 +240,8 @@ namespace KsiazeczkaZdrowia
                             break;
 
                         case "LUCCIANO":
-                    lucciano.WriteData(lucciano);
+                            
+                            lucciano.WriteData();
                             do
                             {
                                 Console.WriteLine($"1. Dodaj wpis do historii choroby {Environment.NewLine} 2.Aktualizuj dane {Environment.NewLine} 0.Powrót");
@@ -265,10 +267,8 @@ namespace KsiazeczkaZdrowia
                                 break;
 
                         case "DIESEL":
-                            foreach (Cat element in listOfCats)
-                            {
-                                element.WriteData(diesel);
-                            }
+                            
+                            diesel.WriteData();
                             do
                             {
                                 Console.WriteLine($"1. Dodaj wpis do historii choroby {Environment.NewLine} 2.Aktualizuj dane {Environment.NewLine} 0.Powrót");

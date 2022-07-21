@@ -26,7 +26,7 @@ namespace KsiazeczkaZdrowia
         {
         }
 
-        public void WriteData (Dog e)
+        public void WriteData ()
         {
             Console.WriteLine("imię: " + Name);
             Console.WriteLine("rasa: " + Breed);
