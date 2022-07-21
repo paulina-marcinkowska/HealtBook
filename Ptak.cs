@@ -12,44 +12,44 @@ namespace KsiazeczkaZdrowia
 {
 
     [XmlRoot(ElementName = "bird")]
-    public class Ptak : Zwierze
+    public class Bird : Animal
     {
         [XmlElement(ElementName = "species")]
-        public string Gatunek { get; set; }
+        public string Species { get; set; }
 
         [XmlElement(ElementName = "breed")]
-        public string Rasa { get; set; }
+        public string Breed { get; set; }
 
-        public Ptak(string imie, DateTime dataUrodzenia, string gatunek, string rasa) : base(imie, dataUrodzenia)
+        public Bird(string name, DateTime dateOfBirth, string species, string breed) : base(name, dateOfBirth)
         {
-            this.Gatunek = gatunek;
-            this.Rasa = rasa;
+            this.Species = species;
+            this.Breed = breed;
 
         }
 
-        public Ptak():base()
+        public Bird():base()
         {
         }
 
-        public void DodajWizyte()
+        public void AddVisit()
         {
             try
             {
-                int czyDodac = int.Parse(Console.ReadLine());
+                int orAdd = int.Parse(Console.ReadLine());
 
-                if (czyDodac == 1)
+                if (orAdd == 1)
                 {
                     Console.WriteLine("Podaj date wizyty: ");
-                    DateTime nDataWizyty = new DateTime();
-                    nDataWizyty = DateTime.Parse(Console.ReadLine());
+                    DateTime nDateOfVisit = new DateTime();
+                    nDateOfVisit = DateTime.Parse(Console.ReadLine());
                     Console.WriteLine("Podaj nazwe kliniki: ");
-                    string nKlinika = Console.ReadLine();
+                    string nClinic = Console.ReadLine();
                     Console.WriteLine("Podaj adres kliniki: ");
-                    string nAdres = Console.ReadLine();
+                    string nAddress = Console.ReadLine();
                     Console.WriteLine("Podaj nazwisko lekarza: ");
-                    string nLekarz = Console.ReadLine();
-                    Wizyta nWizyta = new Wizyta(nKlinika, nAdres, nAdres, nDataWizyty);
-                    HistoriaChoroby.Add(nWizyta);
+                    string nDoctor = Console.ReadLine();
+                    Visit nVisit = new Visit(nClinic, nAddress, nDoctor, nDateOfVisit);
+                    MedicalHistory.Add(nVisit);
                 }
             }
             catch (Exception e)

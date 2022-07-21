@@ -9,40 +9,40 @@ using System.Xml.Serialization;
 namespace KsiazeczkaZdrowia
 {
     [XmlRoot(ElementName = "animal")]
-    public class Zwierze
+    public class Animal
     {
         [XmlElement(ElementName = "name")]
-        public string Imie { get; set; }
+        public string Name { get; set; }
         [XmlElement(ElementName = "dateOfBirth")]
-        public DateTime DataUrodzenia { get; set; }
+        public DateTime DateOfBirth { get; set; }
         [XmlElement(ElementName = "weight")]
-        public int Waga { get; set; }
+        public int Weight { get; set; }
         [XmlElement(ElementName = "medicalHistory")]
-        public List<Wizyta> HistoriaChoroby { get; set; }
+        public List<Visit> MedicalHistory { get; set; }
         [XmlElement(ElementName = "clinic")]
-        public Klinika Klinika { get; set; }
+        public Clinic Clinic { get; set; }
         [XmlElement(ElementName = "visit")]
-        public DateTime Wizyta { get; set; }
+        public DateTime Visit { get; set; }
 
-        public Zwierze(string imie, DateTime dataUrodzenia)
+        public Animal(string name, DateTime dateOfBirth)
         {
-            this.Imie = imie;
-            this.DataUrodzenia = dataUrodzenia;
+            this.Name = name;
+            this.DateOfBirth = dateOfBirth;
         }
-        public Zwierze()
+        public Animal()
         {
         }
 
-        public void DodajWizyte()
+        public void AddVisit()
         {
             try
             {
-                int czyDodac = int.Parse(Console.ReadLine());
-                if (czyDodac == 1)
+                int orAdd = int.Parse(Console.ReadLine());
+                if (orAdd == 1)
                 {
-                    DateTime nowaWizyta = new DateTime();
-                    nowaWizyta = DateTime.Parse(Console.ReadLine());
-                    Wizyta = nowaWizyta;
+                    DateTime nVisit = new DateTime();
+                    nVisit = DateTime.Parse(Console.ReadLine());
+                    Visit = nVisit;
                 }
             }
             catch (Exception e)
