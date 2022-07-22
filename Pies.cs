@@ -9,7 +9,7 @@ using System.Xml.Serialization;
 namespace KsiazeczkaZdrowia
 {
     [XmlRoot(ElementName = "dog")]
-    public class Dog:Animal
+    public class Dog : Animal
     {
         [XmlElement(ElementName = "breed")]
         public string Breed { get; set; }
@@ -22,6 +22,7 @@ namespace KsiazeczkaZdrowia
         {
             this.Breed = breed;
         }
+
         public Dog() : base()
         {
         }
@@ -37,11 +38,13 @@ namespace KsiazeczkaZdrowia
             Console.WriteLine("wizyta: " + Visit);
             Console.WriteLine("klinika: " + Clinic.Name);
             Console.WriteLine("historia choroby: ");
-           foreach(Visit element in MedicalHistory) 
-           {
+            
+            foreach (Visit element in MedicalHistory)
+            {
                 Console.WriteLine(element.Diagnosis);
             }
         }
+
         public void EditDog()
         {
             try
@@ -87,6 +90,7 @@ namespace KsiazeczkaZdrowia
                     MedicalHistory.Add(nVisit);
                 }
             }
+            
             catch (Exception e)
             {
 

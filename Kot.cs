@@ -9,7 +9,7 @@ using System.Xml.Serialization;
 namespace KsiazeczkaZdrowia
 {
     [XmlRoot(ElementName = "cat")]
-    public class Cat:Animal
+    public class Cat : Animal
     {
         [XmlElement(ElementName = "breed")]
         public string Breed{ get; set; }
@@ -48,12 +48,14 @@ namespace KsiazeczkaZdrowia
                 Console.WriteLine("Podaj datę ostatniego odrobaczania (rok, miesiąc, dzień : ");
                 Deworming = DateTime.Parse(Console.ReadLine());
             }
+           
             catch (Exception e)
             {
 
                 Console.WriteLine(e.Message);
             }
         }
+        
         public void AddVisit()
         {
             try
@@ -75,13 +77,13 @@ namespace KsiazeczkaZdrowia
                     MedicalHistory.Add(nVisit);
                 }
             }
+            
             catch (Exception e)
             {
 
                 Console.WriteLine(e.Message);
             }
         }
-
     }
 }
 

@@ -52,7 +52,7 @@ namespace KsiazeczkaZdrowia
         public void EditClinicData()
         {
             try
-            {
+            {    
                 Console.WriteLine("Podaj adres: ");
                 Address = Console.ReadLine();
                 Console.WriteLine("Dodaj nowy kontakt: ");
@@ -65,6 +65,7 @@ namespace KsiazeczkaZdrowia
                 string nDoctor = Console.ReadLine();
                 Doctors.Add(nDoctor);
             }
+
             catch (Exception e)
             {
 
