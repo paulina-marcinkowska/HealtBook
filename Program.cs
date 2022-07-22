@@ -394,9 +394,9 @@ namespace KsiazeczkaZdrowia
         private static void NextDates()
         { 
             Console.WriteLine("Najbliższe szczepienia: ");
-            Console.WriteLine("BLACKY " + blacky.NextVaccination(blacky.Vaccination));
-            Console.WriteLine("LUCCIANO " + lucciano.NextVaccination(lucciano.Vaccination));
-            Console.WriteLine("KAPRYS" + kaprys.NextVaccination(kaprys.Vaccination));
+            Console.WriteLine("BLACKY " + blacky.NextVaccination());
+            Console.WriteLine("LUCCIANO " + lucciano.NextVaccination());
+            Console.WriteLine("KAPRYS" + kaprys.NextVaccination());
 
             HandlingOfMenu();
         }
