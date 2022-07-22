@@ -397,6 +397,7 @@ namespace KsiazeczkaZdrowia
             Console.WriteLine("BLACKY " + blacky.NextVaccination());
             Console.WriteLine("LUCCIANO " + lucciano.NextVaccination());
             Console.WriteLine("KAPRYS" + kaprys.NextVaccination());
+            Console.WriteLine("DIESEL" + diesel.NextVaccination());
 
             HandlingOfMenu();
         }
