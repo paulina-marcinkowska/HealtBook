@@ -10,7 +10,6 @@ using System.Xml.Serialization;
 
 namespace KsiazeczkaZdrowia
 {
-
     [XmlRoot(ElementName = "bird")]
     public class Bird : Animal
     {
@@ -24,10 +23,9 @@ namespace KsiazeczkaZdrowia
         {
             this.Species = species;
             this.Breed = breed;
-
         }
 
-        public Bird():base()
+        public Bird() : base()
         {
         }
 
@@ -52,12 +50,12 @@ namespace KsiazeczkaZdrowia
                     MedicalHistory.Add(nVisit);
                 }
             }
+            
             catch (Exception e)
             {
 
                 Console.WriteLine(e.Message);
             }
         }
-
     }
 }

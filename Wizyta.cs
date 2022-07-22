@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 namespace KsiazeczkaZdrowia
 {
     [XmlRoot(ElementName = "visit")]
-    public class Visit:Clinic
+    public class Visit : Clinic
     {
         [XmlElement(ElementName = "dateOfVisit")]
         public DateTime DateOfVisit { get; set; }
@@ -24,11 +24,9 @@ namespace KsiazeczkaZdrowia
             this.Doctor = doctor;
             this.DateOfVisit = dateOfVisit;
         } 
+
         public Visit():base()
         {
         }
-
     }
-
-
 }

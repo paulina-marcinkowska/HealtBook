@@ -39,8 +39,5 @@ namespace KsiazeczkaZdrowia
             string odczyt = File.ReadAllText(path);
 
         }
-
-
     }
-
 }

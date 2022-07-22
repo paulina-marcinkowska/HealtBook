@@ -24,19 +24,16 @@ namespace KsiazeczkaZdrowia
 
         static void Main(string[] args)
         {
-
             listOfDogs = GetDogs();
             listOfCats = GetCats();
             listOfClinics = GetClinics();
             SaveData();
-
             HandlingOfMenu();
         }
 
 
         public static List<Dog> GetDogs()
         {
-           
             Dog blacky = new Dog("BLACKY", new DateTime(2018, 05, 17), "Wyżeł Małopolski");
             blacky.Weight = 20;
             blacky.Vaccination = new DateTime(2021, 10, 01);
@@ -66,8 +63,7 @@ namespace KsiazeczkaZdrowia
             List<Cat> listaKotow = new List<Cat>();
             listOfCats.Add(diesel);
 
-            return listOfCats;
-            
+            return listOfCats;   
         }
 
         public static List<Clinic> GetClinics()
@@ -96,11 +92,13 @@ namespace KsiazeczkaZdrowia
         private static int ShowMenu()
         {
             Console.WriteLine($"Spis treści: { Environment.NewLine} 1.Pacjenci { Environment.NewLine} 2.Dodaj pacjenta { Environment.NewLine} 3.Najbliższe terminy { Environment.NewLine} 4.Kliniki {Environment.NewLine} 5.Zakończ ");
+            
             try
             {
-              int choice = int.Parse(Console.ReadLine());
+                int choice = int.Parse(Console.ReadLine());
                 return choice;
             }
+            
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
@@ -109,34 +107,35 @@ namespace KsiazeczkaZdrowia
                 return bug;
             }
         }
+
         private static void HandlingOfMenu()
-    {
-        try
         {
+            try
+            {
                 int choice = ShowMenu();
 
                 switch (choice)
-            {
-                case 1:
-                    SelectPatient();
-                    break;
+                {
+                    case 1:
+                        SelectPatient();
+                        break;
 
-                case 2:
-                    Console.WriteLine("Jeżeli chcesz dodać psa wybierz '1', aby dodać kota - wybierz '2' ");
-                    int selectAnimal = int.Parse(Console.ReadLine());
-                    if (selectAnimal == 1)
-                    {
+                    case 2:
+                        Console.WriteLine("Jeżeli chcesz dodać psa wybierz '1', aby dodać kota - wybierz '2' ");
+                        int selectAnimal = int.Parse(Console.ReadLine());
+                        if (selectAnimal == 1)
+                        {
                         AddDog();
-                    }
-                    else if (selectAnimal == 2)
-                    {
+                        }
+                        else if (selectAnimal == 2)
+                        {
                         AddCat();
-                    }
-                    else
-                    {
+                        }
+                        else
+                        {
                         HandlingOfMenu();
-                    }
-                    break;
+                        }
+                        break;
 
                     case 3:
                         NextDates();
@@ -144,18 +143,18 @@ namespace KsiazeczkaZdrowia
 
                     case 4:
                         SelectClinic();
-                    break;
+                        break;
                 }
-        }
-        catch (Exception e)
-        {
+            }
+            catch (Exception e)
+            {
                 Console.WriteLine(e.Message);
                 ShowMenu();
             }
         }
 
-        private static void SelectPatient() 
-    {            
+        private static void SelectPatient()
+        {
             Console.WriteLine($"Lista pacjentów: {Environment.NewLine} 1.Psy: {Environment.NewLine} 2.Koty: ");
             int selectAnimal = int.Parse(Console.ReadLine());
 
@@ -184,14 +183,17 @@ namespace KsiazeczkaZdrowia
             string patientsName = name.ToUpper();
             int choice;
 
-                    switch (patientsName)
-                    {
-                        case "BLACKY":
+            switch (patientsName)
+            {
+                case "BLACKY":
+                    
                     blacky.WriteData();
+                    
                     do
                     {
                         Console.WriteLine($"1. Dodaj wpis do historii choroby {Environment.NewLine} 2.Aktualizuj dane {Environment.NewLine} 0.Powrót");
                         choice = int.Parse(Console.ReadLine());
+                        
                         if (choice == 1)
                         {
                             blacky.AddsVisit();
@@ -208,112 +210,119 @@ namespace KsiazeczkaZdrowia
                         {
                             Console.WriteLine($"1. Dodaj wpis do historii choroby {Environment.NewLine} 2.Aktualizuj dane {Environment.NewLine} 0.Powrót");
                         }  
+
                     } while (choice != 0);
 
-                                break; 
+                    break;
 
-                        case "KAPRYS":
+                case "KAPRYS":
+                    kaprys.WriteData();
+                    do
+                    {
+                        Console.WriteLine($"1. Dodaj wpis do historii choroby {Environment.NewLine} 2.Aktualizuj dane {Environment.NewLine} 0.Powrót");
+                        choice = int.Parse(Console.ReadLine());
+                        if (choice == 1)
+                        {
+                            kaprys.AddVisit();
+                        }
+                        else if (choice == 2)
+                        {
+                            kaprys.EditDog();
+                        }
+                        else if (choice == 0)
+                        {
+                            HandlingOfMenu();
+                        }
+                        else
+                        {
+                            Console.WriteLine($"1. Dodaj wpis do historii choroby {Environment.NewLine} 2.Aktualizuj dane {Environment.NewLine} 0.Powrót");
+                        }
+
+                    } while (choice != 0);
+
+                    break;
+
+                case "LUCCIANO":
                     
-                        kaprys.WriteData();
-                        do
-                            {
-                                Console.WriteLine($"1. Dodaj wpis do historii choroby {Environment.NewLine} 2.Aktualizuj dane {Environment.NewLine} 0.Powrót");
-                                choice = int.Parse(Console.ReadLine());
-                                if (choice == 1)
-                                {
-                                    kaprys.AddVisit();
-                                }
-                                else if (choice == 2)
-                                {
-                                    kaprys.EditDog();
-                                }
-                                else if (choice == 0)
-                                {
-                                    HandlingOfMenu();
-                                }
-                                else
-                                {
-                                    Console.WriteLine($"1. Dodaj wpis do historii choroby {Environment.NewLine} 2.Aktualizuj dane {Environment.NewLine} 0.Powrót");
-                                } 
-                            } while (choice != 0);
-
-                            break;
-
-                        case "LUCCIANO":
+                    lucciano.WriteData();
                             
-                            lucciano.WriteData();
-                            do
-                            {
-                                Console.WriteLine($"1. Dodaj wpis do historii choroby {Environment.NewLine} 2.Aktualizuj dane {Environment.NewLine} 0.Powrót");
-                                choice = int.Parse(Console.ReadLine());
-                                if (choice == 1)
-                                {
-                                    lucciano.AddVisit();
-                                }
-                                else if (choice == 2)
-                                {
-                                    lucciano.EditDog();
-                                }
-                                else if (choice == 0)
-                                {
-                                    HandlingOfMenu();
-                                }
-                                else
-                                {
-                                    Console.WriteLine($"1. Dodaj wpis do historii choroby {Environment.NewLine} 2.Aktualizuj dane {Environment.NewLine} 0.Powrót");
-                                } 
-                            } while (choice != 0);
+                    do
+                    {
+                        Console.WriteLine($"1. Dodaj wpis do historii choroby {Environment.NewLine} 2.Aktualizuj dane {Environment.NewLine} 0.Powrót");
+                        choice = int.Parse(Console.ReadLine());
+                                
+                        if (choice == 1)
+                        {
+                            lucciano.AddVisit();
+                        }
+                        else if (choice == 2)
+                        {
+                            lucciano.EditDog();
+                        }
+                        else if (choice == 0)
+                        {
+                            HandlingOfMenu();
+                        }
+                        else
+                        {
+                            Console.WriteLine($"1. Dodaj wpis do historii choroby {Environment.NewLine} 2.Aktualizuj dane {Environment.NewLine} 0.Powrót");
+                        }
 
-                                break;
+                    } while (choice != 0);
 
-                        case "DIESEL":
-                            
-                            diesel.WriteData();
-                            do
-                            {
-                                Console.WriteLine($"1. Dodaj wpis do historii choroby {Environment.NewLine} 2.Aktualizuj dane {Environment.NewLine} 0.Powrót");
-                                choice = int.Parse(Console.ReadLine());
-                                if (choice == 1)
-                                {
-                                    diesel.AddVisit();
-                                }
-                                else if (choice == 2)
-                                {
-                                    diesel.EditCat();
-                                }
-                                else if (choice == 0)
-                                {
-                                    HandlingOfMenu();
-                                }
-                                else
-                                {
-                                    Console.WriteLine($"1. Dodaj wpis do historii choroby {Environment.NewLine} 2.Aktualizuj dane {Environment.NewLine} 0.Powrót");
-                                }
+                    break;
 
-                            } while (choice != 0);
-                            break;
+                case "DIESEL":
 
-                        default:
-                        SelectPatient();
-                        break;
+                    diesel.WriteData();
+                    
+                    do
+                    {
+                        Console.WriteLine($"1. Dodaj wpis do historii choroby {Environment.NewLine} 2.Aktualizuj dane {Environment.NewLine} 0.Powrót");
+                        choice = int.Parse(Console.ReadLine());
+                                
+                        if (choice == 1)
+                        {
+                            diesel.AddVisit();
+                        }
+                        else if (choice == 2)
+                        {
+                            diesel.EditCat();
+                        }
+                        else if (choice == 0)
+                        {
+                            HandlingOfMenu();
+                        }
+                        else
+                        {
+                            Console.WriteLine($"1. Dodaj wpis do historii choroby {Environment.NewLine} 2.Aktualizuj dane {Environment.NewLine} 0.Powrót");
+                        }
 
-                    }
+                    } while (choice != 0);
+                    
+                    break;
+
+                default:
+                    SelectPatient();
+                    break;
             }
-
+        }
+        
         public static Dog AddDog()
-    {
-        Console.WriteLine("Podaj imię psa: ");
-        string nName = Console.ReadLine();
-        Console.WriteLine("Podaj rasę: ");
-        string nBreed = Console.ReadLine();
-        Console.WriteLine("Podaj datę urodzenia psa: ");
-        DateTime nDateOfBirth = new DateTime();
-        nDateOfBirth = DateTime.Parse(Console.ReadLine());
+        {
+            Console.WriteLine("Podaj imię psa: ");
+            string nName = Console.ReadLine();
+            Console.WriteLine("Podaj rasę: ");
+            string nBreed = Console.ReadLine();
+            Console.WriteLine("Podaj datę urodzenia psa: ");
+            DateTime nDateOfBirth = new DateTime();
+            nDateOfBirth = DateTime.Parse(Console.ReadLine());
 
-        Dog x = new Dog(nName, nDateOfBirth, nBreed);
+            Dog x = new Dog(nName, nDateOfBirth, nBreed);
 
-        Console.WriteLine("Jeżeli chcesz uzupełnić dodatkowe dane pacjenta (np. waga, szczepienie) wybierz '1', aby powrócić do spisu treści wybierz '0'  ");
-        int choice = int.Parse(Console.ReadLine());
+            Console.WriteLine("Jeżeli chcesz uzupełnić dodatkowe dane pacjenta (np. waga, szczepienie) wybierz '1', aby powrócić do spisu treści wybierz '0'  ");
+            int choice = int.Parse(Console.ReadLine());
+            
             if (choice == 1)
             {
                 Console.WriteLine("Podaj wagę: ");
@@ -333,15 +342,15 @@ namespace KsiazeczkaZdrowia
                 DateTime nDeworming = new DateTime();
                 nDeworming = DateTime.Parse(Console.ReadLine());
                 x.Deworming = nDeworming;
-            }            
-        else
-        {
-                        HandlingOfMenu();
-        }
-            SaveData();
+            }
+            else
+            {
+                HandlingOfMenu();
+            }
 
             return x;
-    }
+        }
+
         public static Cat AddCat()
         {
             Console.WriteLine("Podaj imię kota: ");
@@ -357,6 +366,7 @@ namespace KsiazeczkaZdrowia
 
             Console.WriteLine("Jeżeli chcesz uzupełnić dodatkowe dane pacjenta (np. waga, szczepienie) wybierz '1', aby powrócić do spisu treści wybierz '0'  ");
             int choice = int.Parse(Console.ReadLine());
+            
             if (choice == 1)
             {
             Console.WriteLine("Podaj wagę: ");
@@ -372,38 +382,34 @@ namespace KsiazeczkaZdrowia
             DateTime nDeworming = new DateTime();
             nDeworming = DateTime.Parse(Console.ReadLine());
             y.Deworming = nDeworming;
-
             }
             else
             {
              HandlingOfMenu();
             }
-            SaveData();
 
             return y;
         }
-        private static void NextDates()
-          {
-            GetDogs();
-            GetCats();
-
-              Console.WriteLine("Najbliższe szczepienia: ");
-              Console.WriteLine("BLACKY " + blacky.NextVaccination(blacky.Vaccination));
-              Console.WriteLine("LUCCIANO " + lucciano.NextVaccination(lucciano.Vaccination));
-              Console.WriteLine("KAPRYS" + kaprys.NextVaccination(kaprys.Vaccination));
-
-              HandlingOfMenu();
-          }
         
-       private static void SelectClinic()
-        {
-            List<Clinic> listOfClinic = GetClinics();
+        private static void NextDates()
+        { 
+            Console.WriteLine("Najbliższe szczepienia: ");
+            Console.WriteLine("BLACKY " + blacky.NextVaccination(blacky.Vaccination));
+            Console.WriteLine("LUCCIANO " + lucciano.NextVaccination(lucciano.Vaccination));
+            Console.WriteLine("KAPRYS" + kaprys.NextVaccination(kaprys.Vaccination));
 
+            HandlingOfMenu();
+        }
+
+        private static void SelectClinic()
+        {
             Console.WriteLine($"Aby zobaczyć profil kliniki podaj jej nazwę, jeżeli chcesz dodać nową klinikę wpisz 'nowa' {Environment.NewLine} Lista klinik: ");
-            foreach (Clinic element in listOfClinic)
+            
+            foreach (Clinic element in listOfClinics)
             {
                 Console.WriteLine(element.Name);
             }
+            
             try
             {
                 string name = Console.ReadLine();
@@ -415,79 +421,81 @@ namespace KsiazeczkaZdrowia
                     switch (nameOfClinic)
                     {
                         case "ANIMAL":
+                            
                             animal.WriteOutData();
                             Console.WriteLine($"Co chcesz zrobic? {Environment.NewLine} 1. Edytuj dane kliniki {Environment.NewLine} 0.Powrót");
                             choice = int.Parse(Console.ReadLine());
+                            
                             if (choice == 1)
-                                {
-                                   animal.EditClinicData();
-                                                            }
-                                                         else if (choice == 0)
-                                                   {
-                                                        SelectClinic();
-                                                 }
-                                                else
-                                             {
-                                               HandlingOfMenu();
-                                         }
-                                        break;
+                            {
+                                animal.EditClinicData();
+                            }
+                            else if (choice == 0)
+                            {
+                                SelectClinic();
+                            }
+                            else
+                            {
+                                HandlingOfMenu();
+                            }
+                            break;
 
-                                    case "KACZOR":
-                                        kaczor.WriteOutData();
-                                     Console.WriteLine($"Co chcesz zrobic? {Environment.NewLine} 1. Edytuj dane kliniki {Environment.NewLine} 0. Powrót");
-                                  choice = int.Parse(Console.ReadLine());
+                        case "KACZOR":
+                                        
+                            kaczor.WriteOutData();
+                            Console.WriteLine($"Co chcesz zrobic? {Environment.NewLine} 1. Edytuj dane kliniki {Environment.NewLine} 0. Powrót");
+                            choice = int.Parse(Console.ReadLine());
+                            
                             if (choice == 1)
-                                {
-                                                               kaczor.EditClinicData();
-                                       }
-                                                       else if (choice == 0)
-                                                     {
-                                                       SelectClinic();
-                                             }
-                                            else
-                                           {
-                                              HandlingOfMenu();
-                                       }
-                                break;
+                            {
+                                kaczor.EditClinicData();
+                            }
+                            else if (choice == 0)
+                            {
+                                SelectClinic();
+                            }
+                            else
+                            {
+                                HandlingOfMenu();
+                            }
+                            break;
 
-                                    case "NOWA":
-                                    AddClinic();
-                                    break;
-                                }
+                        case "NOWA":
+                                    
+                            AddClinic();
+                            break;
+                    }
                                                 }
-                                     catch (Exception e)
-                                    {
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    SelectClinic();
+                }
+            }
+            catch (Exception e)
+            {
 
-                                    Console.WriteLine(e.Message);
-                                    SelectClinic();
-                                }
-                            }
-                                    catch (Exception e)
-                                    {
-
-                                    Console.WriteLine(e.Message);
-                                    HandlingOfMenu();
-                                }
-                            }
+                Console.WriteLine(e.Message);
+                HandlingOfMenu();
+            }
+        }
        private static Clinic AddClinic()
-                                    {
-                                    Console.WriteLine("Podaj nazwę kliniki");
-                                    string nName = Console.ReadLine();
-                                    Console.WriteLine("Podaj adres: ");
-                                    string nAddress = Console.ReadLine();
-                                    Console.WriteLine("Podaj numer kontaktowy: ");
-                                    string nContact = Console.ReadLine();
-                                    Console.WriteLine("Podaj usługi weterynaryjne: ");
-                                    string nService = Console.ReadLine();
-                                    Console.WriteLine("Dodaj lekarza weterynarii");
-                                    string nDoctor = Console.ReadLine();
+        {
+            Console.WriteLine("Podaj nazwę kliniki");
+            string nName = Console.ReadLine();
+            Console.WriteLine("Podaj adres: ");
+            string nAddress = Console.ReadLine();
+            Console.WriteLine("Podaj numer kontaktowy: ");
+            string nContact = Console.ReadLine();
+            Console.WriteLine("Podaj usługi weterynaryjne: ");
+            string nService = Console.ReadLine();
+            Console.WriteLine("Dodaj lekarza weterynarii");
+            string nDoctor = Console.ReadLine();
 
-                                    Clinic z = new Clinic(nName, nAddress);
-                                    z.Contact.Add(nContact);
-                                    z.Service.Add(nService);
-                                    z.Doctors.Add(nDoctor);
-            SaveData();
-
+            Clinic z = new Clinic(nName, nAddress);
+            z.Contact.Add(nContact);
+            z.Service.Add(nService);
+            z.Doctors.Add(nDoctor);
 
             return new Clinic(nName, nAddress);
 
