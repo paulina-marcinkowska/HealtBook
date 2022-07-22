@@ -34,17 +34,17 @@ namespace KsiazeczkaZdrowia
 
         public static List<Dog> GetDogs()
         {
-            Dog blacky = new Dog("BLACKY", new DateTime(2018, 05, 17), "Wyżeł Małopolski");
+            blacky = new Dog("BLACKY", new DateTime(2018, 05, 17), "Wyżeł Małopolski");
             blacky.Weight = 20;
             blacky.Vaccination = new DateTime(2021, 10, 01);
             blacky.Deworming = new DateTime(2021, 07, 28);
             blacky.MedicalHistory = new List<Visit> ();
             blacky.Clinic = animal;
 
-            Dog lucciano = new Dog("LUCCIANO", new DateTime(2015, 12, 24), "Lhasa Apso");
+            lucciano = new Dog("LUCCIANO", new DateTime(2015, 12, 24), "Lhasa Apso");
             lucciano.Clinic = kaczor;
 
-            Dog kaprys = new Dog("KAPRYS", new DateTime(2016, 02, 01), "Lhasa Apso");
+            kaprys = new Dog("KAPRYS", new DateTime(2016, 02, 01), "Lhasa Apso");
             kaprys.Clinic = kaczor;
 
             List<Dog> listOfDogs = new List<Dog>();
@@ -57,7 +57,7 @@ namespace KsiazeczkaZdrowia
 
         public static List<Cat> GetCats()
         {
-            Cat diesel = new Cat("DIESEL", new DateTime(2008, 01, 01), "Archangielska");
+            diesel = new Cat("DIESEL", new DateTime(2008, 01, 01), "Archangielska");
             diesel.Clinic = kaczor;
 
             List<Cat> listaKotow = new List<Cat>();
@@ -68,8 +68,8 @@ namespace KsiazeczkaZdrowia
 
         public static List<Clinic> GetClinics()
         {
-            Clinic animal = new Clinic("ANIMAL", "aaa");
-            Clinic kaczor = new Clinic("KACZOR", "kkk");
+            animal = new Clinic("ANIMAL", "aaa");
+            kaczor = new Clinic("KACZOR", "kkk");
 
             List<Clinic> listOfClinic = new List<Clinic>();
             listOfClinic.Add(animal);
