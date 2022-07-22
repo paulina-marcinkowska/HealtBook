@@ -15,6 +15,8 @@ namespace KsiazeczkaZdrowia
         public string Breed{ get; set; }
         [XmlElement(ElementName = "deworming")]
         public DateTime Deworming { get; set; }
+        [XmlElement(ElementName = "vaccination")]
+        public DateTime Vaccination { get; set; }
 
         public Cat(string name, DateTime dateOfBirth, string breed) : base(name, dateOfBirth)
         {
@@ -83,6 +85,14 @@ namespace KsiazeczkaZdrowia
 
                 Console.WriteLine(e.Message);
             }
+        }
+        
+        public TimeSpan NextVaccination()
+        {
+            DateTime today = new DateTime();
+            today = DateTime.Now.Date;
+            TimeSpan nVaccination = today - Vaccination;
+            return nVaccination;
         }
     }
 }
