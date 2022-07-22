@@ -369,19 +369,19 @@ namespace KsiazeczkaZdrowia
             
             if (choice == 1)
             {
-            Console.WriteLine("Podaj wagę: ");
-            int nWeigth = int.Parse(Console.ReadLine());
-            y.Weight = nWeigth;
-            Console.WriteLine("Podaj nazwe kliniki: ");
-            string nameOfClinic = Console.ReadLine();
-            y.Clinic.Name = nameOfClinic;
-            Console.WriteLine("Podaj adres kliniki: ");
-            string nAddress = Console.ReadLine();
-            y.Clinic.Address = nAddress;
-            Console.WriteLine("Podaj datę ostatniego odrobaczania : ");
-            DateTime nDeworming = new DateTime();
-            nDeworming = DateTime.Parse(Console.ReadLine());
-            y.Deworming = nDeworming;
+                Console.WriteLine("Podaj wagę: ");
+                int nWeigth = int.Parse(Console.ReadLine());
+                y.Weight = nWeigth;
+                Console.WriteLine("Podaj nazwe kliniki: ");
+                string nameOfClinic = Console.ReadLine();
+                y.Clinic.Name = nameOfClinic;
+                Console.WriteLine("Podaj adres kliniki: ");
+                string nAddress = Console.ReadLine();
+                y.Clinic.Address = nAddress;
+                Console.WriteLine("Podaj datę ostatniego odrobaczania : ");
+                DateTime nDeworming = new DateTime();
+                nDeworming = DateTime.Parse(Console.ReadLine());
+                y.Deworming = nDeworming;
             }
             else
             {
