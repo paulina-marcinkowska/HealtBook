@@ -9,14 +9,13 @@ using System.Xml.Serialization;
 using Twilio.TwiML;
 using Bond;
 using NPOI.SS.Formula.Functions;
+using System.Linq;
 
 namespace KsiazeczkaZdrowia
 {
     class Program
     {
-        static Dog blacky, kaprys, lucciano;
-        static Cat diesel;
-        static Clinic animal, kaczor;
+        //static Clinic animal, kaczor;
         static List<Dog> listOfDogs = new List<Dog>();
         static List<Cat> listOfCats = new List<Cat>();
         static List<Clinic> listOfClinics = new List<Clinic>();
@@ -30,22 +29,32 @@ namespace KsiazeczkaZdrowia
             SaveData();
             HandlingOfMenu();
         }
+        public static List<Clinic> GetClinics()
+        {
+            Clinic animal = new Clinic("ANIMAL", "aaa");
+            Clinic kaczor = new Clinic("KACZOR", "kkk");
 
+            List<Clinic> listOfClinic = new List<Clinic>();
+            listOfClinic.Add(animal);
+            listOfClinic.Add(kaczor);
+
+            return listOfClinic;
+        }
 
         public static List<Dog> GetDogs()
         {
-            blacky = new Dog("BLACKY", new DateTime(2018, 05, 17), "Wyżeł Małopolski");
+            Dog blacky = new Dog("BLACKY", new DateTime(2018, 05, 17), "Wyżeł Małopolski");
             blacky.Weight = 20;
             blacky.Vaccination = new DateTime(2021, 10, 01);
             blacky.Deworming = new DateTime(2021, 07, 28);
             blacky.MedicalHistory = new List<Visit> ();
-            blacky.Clinic = animal;
+            blacky.ClinicName = listOfClinics[0].Name;
 
-            lucciano = new Dog("LUCCIANO", new DateTime(2015, 12, 24), "Lhasa Apso");
-            lucciano.Clinic = kaczor;
+            Dog lucciano = new Dog("LUCCIANO", new DateTime(2015, 12, 24), "Lhasa Apso");
+            lucciano.ClinicName = listOfClinics[1].Name;
 
-            kaprys = new Dog("KAPRYS", new DateTime(2016, 02, 01), "Lhasa Apso");
-            kaprys.Clinic = kaczor;
+            Dog kaprys = new Dog("KAPRYS", new DateTime(2016, 02, 01), "Lhasa Apso");
+            kaprys.ClinicName = listOfClinics[1].Name;
 
             List<Dog> listOfDogs = new List<Dog>();
             listOfDogs.Add(blacky);
@@ -57,25 +66,13 @@ namespace KsiazeczkaZdrowia
 
         public static List<Cat> GetCats()
         {
-            diesel = new Cat("DIESEL", new DateTime(2008, 01, 01), "Archangielska");
-            diesel.Clinic = kaczor;
+            Cat diesel = new Cat("DIESEL", new DateTime(2008, 01, 01), "Archangielska");
+            diesel.ClinicName = listOfClinics[1].Name;
 
             List<Cat> listaKotow = new List<Cat>();
             listOfCats.Add(diesel);
 
             return listOfCats;   
-        }
-
-        public static List<Clinic> GetClinics()
-        {
-            animal = new Clinic("ANIMAL", "aaa");
-            kaczor = new Clinic("KACZOR", "kkk");
-
-            List<Clinic> listOfClinic = new List<Clinic>();
-            listOfClinic.Add(animal);
-            listOfClinic.Add(kaczor);
-
-            return listOfClinic;
         }
 
         public static void SaveData()
@@ -186,9 +183,9 @@ namespace KsiazeczkaZdrowia
             switch (patientsName)
             {
                 case "BLACKY":
-                    
-                    blacky.WriteData();
-                    
+
+                    listOfDogs[0].WriteData();
+
                     do
                     {
                         Console.WriteLine($"1. Dodaj wpis do historii choroby {Environment.NewLine} 2.Aktualizuj dane {Environment.NewLine} 0.Powrót");
@@ -196,11 +193,11 @@ namespace KsiazeczkaZdrowia
                         
                         if (choice == 1)
                         {
-                            blacky.AddsVisit();
+                            listOfDogs[0].AddsVisit();
                         }
                         else if (choice == 2)
                         {
-                            blacky.EditDog();
+                            listOfDogs[0].EditDog();
                         }
                         else if (choice == 0)
                         {
@@ -216,18 +213,19 @@ namespace KsiazeczkaZdrowia
                     break;
 
                 case "KAPRYS":
-                    kaprys.WriteData();
+
+                    listOfDogs[2].WriteData();
                     do
                     {
                         Console.WriteLine($"1. Dodaj wpis do historii choroby {Environment.NewLine} 2.Aktualizuj dane {Environment.NewLine} 0.Powrót");
                         choice = int.Parse(Console.ReadLine());
                         if (choice == 1)
                         {
-                            kaprys.AddVisit();
+                            listOfDogs[2].AddVisit();
                         }
                         else if (choice == 2)
                         {
-                            kaprys.EditDog();
+                            listOfDogs[2].EditDog();
                         }
                         else if (choice == 0)
                         {
@@ -243,8 +241,8 @@ namespace KsiazeczkaZdrowia
                     break;
 
                 case "LUCCIANO":
-                    
-                    lucciano.WriteData();
+
+                    listOfDogs[1].WriteData();
                             
                     do
                     {
@@ -253,11 +251,11 @@ namespace KsiazeczkaZdrowia
                                 
                         if (choice == 1)
                         {
-                            lucciano.AddVisit();
+                            listOfDogs[1].AddVisit();
                         }
                         else if (choice == 2)
                         {
-                            lucciano.EditDog();
+                            listOfDogs[1].EditDog();
                         }
                         else if (choice == 0)
                         {
@@ -274,7 +272,7 @@ namespace KsiazeczkaZdrowia
 
                 case "DIESEL":
 
-                    diesel.WriteData();
+                    listOfCats[0].WriteData();
                     
                     do
                     {
@@ -283,11 +281,11 @@ namespace KsiazeczkaZdrowia
                                 
                         if (choice == 1)
                         {
-                            diesel.AddVisit();
+                            listOfCats[0].AddVisit();
                         }
                         else if (choice == 2)
                         {
-                            diesel.EditCat();
+                            listOfCats[0].EditCat();
                         }
                         else if (choice == 0)
                         {
@@ -330,10 +328,7 @@ namespace KsiazeczkaZdrowia
                 x.Weight = nWeight;
                 Console.WriteLine("Podaj nazwe kliniki: ");
                 string nameOfClinic = Console.ReadLine();
-                x.Clinic.Name = nameOfClinic;
-                Console.WriteLine("Podaj adres kliniki: ");
-                string nAddress = Console.ReadLine();
-                x.Clinic.Address = nAddress;
+                x.ClinicName = nameOfClinic;
                 Console.WriteLine("Podaj datę ostatniego szczepienia (rok, miesiąc, dzień) : ");
                 DateTime nVaccination = new DateTime();
                 nVaccination = DateTime.Parse(Console.ReadLine());
@@ -374,10 +369,7 @@ namespace KsiazeczkaZdrowia
                 y.Weight = nWeigth;
                 Console.WriteLine("Podaj nazwe kliniki: ");
                 string nameOfClinic = Console.ReadLine();
-                y.Clinic.Name = nameOfClinic;
-                Console.WriteLine("Podaj adres kliniki: ");
-                string nAddress = Console.ReadLine();
-                y.Clinic.Address = nAddress;
+                y.ClinicName = nameOfClinic;
                 Console.WriteLine("Podaj datę ostatniego odrobaczania : ");
                 DateTime nDeworming = new DateTime();
                 nDeworming = DateTime.Parse(Console.ReadLine());
@@ -394,10 +386,10 @@ namespace KsiazeczkaZdrowia
         private static void NextDates()
         { 
             Console.WriteLine("Najbliższe szczepienia: ");
-            Console.WriteLine("BLACKY " + blacky.NextVaccination());
-            Console.WriteLine("LUCCIANO " + lucciano.NextVaccination());
-            Console.WriteLine("KAPRYS" + kaprys.NextVaccination());
-            Console.WriteLine("DIESEL" + diesel.NextVaccination());
+            Console.WriteLine("BLACKY " + listOfDogs[0].NextVaccination());
+            Console.WriteLine("LUCCIANO " + listOfDogs[1].NextVaccination());
+            Console.WriteLine("KAPRYS" + listOfDogs[2].NextVaccination());
+            Console.WriteLine("DIESEL" + listOfCats[0].NextVaccination());
 
             HandlingOfMenu();
         }
@@ -423,13 +415,13 @@ namespace KsiazeczkaZdrowia
                     {
                         case "ANIMAL":
                             
-                            animal.WriteOutData();
+                            listOfClinics[0].WriteData();
                             Console.WriteLine($"Co chcesz zrobic? {Environment.NewLine} 1. Edytuj dane kliniki {Environment.NewLine} 0.Powrót");
                             choice = int.Parse(Console.ReadLine());
                             
                             if (choice == 1)
                             {
-                                animal.EditClinicData();
+                                listOfClinics[0].EditClinicData();
                             }
                             else if (choice == 0)
                             {
@@ -442,14 +434,14 @@ namespace KsiazeczkaZdrowia
                             break;
 
                         case "KACZOR":
-                                        
-                            kaczor.WriteOutData();
+
+                            listOfClinics[1].WriteData();
                             Console.WriteLine($"Co chcesz zrobic? {Environment.NewLine} 1. Edytuj dane kliniki {Environment.NewLine} 0. Powrót");
                             choice = int.Parse(Console.ReadLine());
                             
                             if (choice == 1)
                             {
-                                kaczor.EditClinicData();
+                                listOfClinics[1].EditClinicData();
                             }
                             else if (choice == 0)
                             {
