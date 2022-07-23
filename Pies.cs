@@ -62,7 +62,7 @@ namespace KsiazeczkaZdrowia
                 Console.WriteLine(e.Message);
             }
         }
-        public TimeSpan NextVaccination(DateTime Vaccination)
+        public TimeSpan NextVaccination()
         {
             DateTime today = new DateTime();
             today = DateTime.Now.Date;
