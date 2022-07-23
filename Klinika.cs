@@ -32,7 +32,7 @@ namespace KsiazeczkaZdrowia
         { 
         }
 
-        public void WriteOutData() 
+        public void WriteData() 
         {
             Console.WriteLine("Nazwa: " + Name);
             Console.WriteLine("Adres: " + Address);

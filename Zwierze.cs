@@ -20,7 +20,7 @@ namespace KsiazeczkaZdrowia
         [XmlElement(ElementName = "medicalHistory")]
         public List<Visit> MedicalHistory { get; set; }
         [XmlElement(ElementName = "clinic")]
-        public Clinic Clinic { get; set; }
+        public string ClinicName { get; set; }
         [XmlElement(ElementName = "visit")]
         public DateTime Visit { get; set; }
 
