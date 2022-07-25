@@ -15,7 +15,6 @@ namespace KsiazeczkaZdrowia
 {
     class Program
     {
-        //static Clinic animal, kaczor;
         static List<Dog> listOfDogs = new List<Dog>();
         static List<Cat> listOfCats = new List<Cat>();
         static List<Clinic> listOfClinics = new List<Clinic>();
@@ -33,12 +32,11 @@ namespace KsiazeczkaZdrowia
         {
             Clinic animal = new Clinic("ANIMAL", "aaa");
             Clinic kaczor = new Clinic("KACZOR", "kkk");
+            
+            listOfClinics.Add(animal);
+            listOfClinics.Add(kaczor);
 
-            List<Clinic> listOfClinic = new List<Clinic>();
-            listOfClinic.Add(animal);
-            listOfClinic.Add(kaczor);
-
-            return listOfClinic;
+            return listOfClinics;
         }
 
         public static List<Dog> GetDogs()
@@ -56,7 +54,6 @@ namespace KsiazeczkaZdrowia
             Dog kaprys = new Dog("KAPRYS", new DateTime(2016, 02, 01), "Lhasa Apso");
             kaprys.ClinicName = listOfClinics[1].Name;
 
-            List<Dog> listOfDogs = new List<Dog>();
             listOfDogs.Add(blacky);
             listOfDogs.Add(lucciano);
             listOfDogs.Add(kaprys);
@@ -69,7 +66,6 @@ namespace KsiazeczkaZdrowia
             Cat diesel = new Cat("DIESEL", new DateTime(2008, 01, 01), "Archangielska");
             diesel.ClinicName = listOfClinics[1].Name;
 
-            List<Cat> listaKotow = new List<Cat>();
             listOfCats.Add(diesel);
 
             return listOfCats;   
