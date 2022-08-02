@@ -37,13 +37,9 @@ namespace KsiazeczkaZdrowia
         {
             try
             {
-                int orAdd = int.Parse(Console.ReadLine());
-                if (orAdd == 1)
-                {
-                    DateTime nVisit = new DateTime();
-                    nVisit = DateTime.Parse(Console.ReadLine());
-                    Visit = nVisit;
-                }
+                    DateTime newVisit = new DateTime();
+                    newVisit = DateTime.Parse(Console.ReadLine());
+                    Visit = newVisit;
             }
             catch (Exception e)
             {
