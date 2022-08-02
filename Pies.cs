@@ -36,7 +36,7 @@ namespace KsiazeczkaZdrowia
             Console.WriteLine("szczepienie: " + Vaccination);
             Console.WriteLine("odrobaczanie: " + Deworming);
             Console.WriteLine("wizyta: " + Visit);
-            Console.WriteLine("klinika: " + Clinic.Name);
+            Console.WriteLine("klinika: " + ClinicName);
             Console.WriteLine("historia choroby: ");
             
             foreach (Visit element in MedicalHistory)
@@ -66,29 +66,24 @@ namespace KsiazeczkaZdrowia
         {
             DateTime today = new DateTime();
             today = DateTime.Now.Date;
-            TimeSpan nVaccination = today - Vaccination;
-            return nVaccination;
+            TimeSpan newVaccination = today - Vaccination;
+            return newVaccination;
         }
         public void AddsVisit()
         {
             try
             {
-                int orAdd = int.Parse(Console.ReadLine());
-
-                if (orAdd == 1)
-                {
                     Console.WriteLine("Podaj date wizyty: ");
-                    DateTime nDateOfVisit = new DateTime();
-                    nDateOfVisit = DateTime.Parse(Console.ReadLine());
+                    DateTime newDateOfVisit = new DateTime();
+                    newDateOfVisit = DateTime.Parse(Console.ReadLine());
                     Console.WriteLine("Podaj nazwe kliniki: ");
-                    string nClinic = Console.ReadLine();
+                    string newClinic = Console.ReadLine();
                     Console.WriteLine("Podaj adres kliniki: ");
-                    string nAddress = Console.ReadLine();
+                    string newAddress = Console.ReadLine();
                     Console.WriteLine("Podaj nazwisko lekarza: ");
-                    string nDoctor = Console.ReadLine();
-                    Visit nVisit = new Visit(nClinic, nAddress, nDoctor, nDateOfVisit);
-                    MedicalHistory.Add(nVisit);
-                }
+                    string newDoctor = Console.ReadLine();
+                    Visit newVisit = new Visit(newClinic, newAddress, newDoctor, newDateOfVisit);
+                    MedicalHistory.Add(newVisit);
             }
             
             catch (Exception e)

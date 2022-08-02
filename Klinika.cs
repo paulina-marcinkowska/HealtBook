@@ -56,14 +56,14 @@ namespace KsiazeczkaZdrowia
                 Console.WriteLine("Podaj adres: ");
                 Address = Console.ReadLine();
                 Console.WriteLine("Dodaj nowy kontakt: ");
-                string nContact = Console.ReadLine();
-                Contact.Add(nContact);
+                string newContact = Console.ReadLine();
+                Contact.Add(newContact);
                 Console.WriteLine("Dodaj nowe usługi: ");
-                string nService = Console.ReadLine();
-                Service.Add(nService);
+                string newService = Console.ReadLine();
+                Service.Add(newService);
                 Console.WriteLine("Dodaj nowego lekarza: ");
-                string nDoctor = Console.ReadLine();
-                Doctors.Add(nDoctor);
+                string newDoctor = Console.ReadLine();
+                Doctors.Add(newDoctor);
             }
 
             catch (Exception e)
