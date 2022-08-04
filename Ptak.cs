@@ -29,6 +29,15 @@ namespace KsiazeczkaZdrowia
         {
         }
 
+        public override string ToString()
+        {
+            string currentData = "Imię: " + Name + "   " + "Rasa: " + Breed + "   " + "Data urodzenia: " + DateOfBirth + "   " + "Waga: " + Weight + "   " + "Klinika: " + ClinicName + "   " + "Historia choroby: ";
+            foreach (Visit element in MedicalHistory)
+            {
+                currentData += string.Format("{0}   ", element.Diagnosis);
+            }
+            return currentData;
+        }
         public void AddVisit()
         {
             try
