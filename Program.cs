@@ -117,11 +117,11 @@ namespace KsiazeczkaZdrowia
                             int selectAnimal = int.Parse(Console.ReadLine());
                             if (selectAnimal == 1)
                             {
-                                AddDog();
+                                AddingDogToList();
                             }
                             else if (selectAnimal == 2)
                             {
-                                AddCat();
+                                AddingCatToList();
                             }
                             else
                             {
@@ -449,7 +449,7 @@ namespace KsiazeczkaZdrowia
 
                     case "NOWA":
 
-                        AddClinic();
+                        AddingClinicToList();
                         break;
 
                     default:
@@ -528,6 +528,26 @@ namespace KsiazeczkaZdrowia
                 throw;
             }
 
+        }
+
+        private static List<Clinic> AddingClinicToList()
+        {
+            Clinic newClinic = AddClinic();
+            listOfClinics.Add(newClinic);
+            return listOfClinics;
+        }
+
+        private static List<Dog> AddingDogToList()
+        {
+            Dog newDog = AddDog();
+            listOfDogs.Add(newDog);
+            return listOfDogs;
+        }
+        private static List<Cat> AddingCatToList()
+        {
+            Cat newCat = AddCat();
+            listOfCats.Add(newCat);
+            return listOfCats;
         }
 
 
