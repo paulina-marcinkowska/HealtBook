@@ -37,20 +37,6 @@ namespace KsiazeczkaZdrowia
             return currentData;
 
         }
-        public void WriteData()
-        {
-            Console.WriteLine("imię: " + Name);
-            Console.WriteLine("rasa: " + Breed);
-            Console.WriteLine("data urodzenia: " + DateOfBirth);
-            Console.WriteLine("waga: " + Weight);
-            Console.WriteLine("odrobaczanie: " + Deworming);
-            Console.WriteLine("wizyta: " + Visit);
-            Console.WriteLine("klinika: " + ClinicName);
-            foreach (Visit element in MedicalHistory)
-            {
-                Console.WriteLine(element.Diagnosis);
-            }
-        }
         public void EditCat()
         {
             try
@@ -59,18 +45,26 @@ namespace KsiazeczkaZdrowia
                 Weight = int.Parse(Console.ReadLine());
                 Console.WriteLine("Podaj datę ostatniego odrobaczania (rok, miesiąc, dzień : ");
                 Deworming = DateTime.Parse(Console.ReadLine());
+                Console.WriteLine("Podaj datę ostatniego szczepienia (rok, miesiąc, dzień) : ");
+                Vaccination = DateTime.Parse(Console.ReadLine());
             }
            
             catch (Exception e)
             {
-
                 Console.WriteLine(e.Message);
             }
         }
         public void LastDates()
         {
-            Console.WriteLine("Ostatnie szczepienie: " + Vaccination);
-            Console.WriteLine("Ostatnie odrobaczanie: " + Deworming);
+            try
+            {
+                Console.WriteLine("Ostatnie szczepienie: " + Vaccination);
+                Console.WriteLine("Ostatnie odrobaczanie: " + Deworming);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
         public TimeSpan NextVaccination()
         {

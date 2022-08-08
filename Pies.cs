@@ -37,24 +37,6 @@ namespace KsiazeczkaZdrowia
             return currentData;
 
         }
-        public void WriteData ()
-        {
-            Console.WriteLine("imię: " + Name);
-            Console.WriteLine("rasa: " + Breed);
-            Console.WriteLine("data urodzenia: " + DateOfBirth);
-            Console.WriteLine("waga: " + Weight);
-            Console.WriteLine("szczepienie: " + Vaccination);
-            Console.WriteLine("odrobaczanie: " + Deworming);
-            Console.WriteLine("wizyta: " + Visit);
-            Console.WriteLine("klinika: " + ClinicName);
-            Console.WriteLine("historia choroby: ");
-            
-            foreach (Visit element in MedicalHistory)
-            {
-                Console.WriteLine(element.Diagnosis);
-            }
-        }
-
         public void EditDog()
         {
             try
@@ -68,17 +50,21 @@ namespace KsiazeczkaZdrowia
             }
             catch (Exception e)
             {
-
                 Console.WriteLine(e.Message);
             }
         }
-
         public void LastDates() 
         {
-            Console.WriteLine("Ostatnie szczepienie: " + Vaccination);
-            Console.WriteLine("Ostatnie odrobaczanie: " + Deworming);
+            try
+            {
+                Console.WriteLine("Ostatnie szczepienie: " + Vaccination);
+                Console.WriteLine("Ostatnie odrobaczanie: " + Deworming);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
-
         public TimeSpan NextVaccination()
         {
             DateTime today = new DateTime();

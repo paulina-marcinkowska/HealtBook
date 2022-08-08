@@ -35,17 +35,24 @@ namespace KsiazeczkaZdrowia
 
         public void AddVisit()
         {
-            Console.WriteLine("Podaj date wizyty: ");
-            DateTime newDateOfVisit = new DateTime();
-            newDateOfVisit = DateTime.Parse(Console.ReadLine());
-            Console.WriteLine("Podaj nazwe kliniki: ");
-            string newClinic = Console.ReadLine();
-            Console.WriteLine("Podaj adres kliniki: ");
-            string newAddress = Console.ReadLine();
-            Console.WriteLine("Podaj nazwisko lekarza: ");
-            string newDoctor = Console.ReadLine();
-            Visit newVisit = new Visit(newClinic, newAddress, newDoctor, newDateOfVisit);
-            MedicalHistory.Add(newVisit);
+            try
+            {
+                Console.WriteLine("Podaj date wizyty: ");
+                DateTime newDateOfVisit = new DateTime();
+                newDateOfVisit = DateTime.Parse(Console.ReadLine());
+                Console.WriteLine("Podaj nazwe kliniki: ");
+                string newClinic = Console.ReadLine();
+                Console.WriteLine("Podaj adres kliniki: ");
+                string newAddress = Console.ReadLine();
+                Console.WriteLine("Podaj nazwisko lekarza: ");
+                string newDoctor = Console.ReadLine();
+                Visit newVisit = new Visit(newClinic, newAddress, newDoctor, newDateOfVisit);
+                MedicalHistory.Add(newVisit);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
 
     }
