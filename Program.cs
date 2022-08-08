@@ -46,13 +46,13 @@ namespace KsiazeczkaZdrowia
             blacky.Vaccination = new DateTime(2021, 10, 01);
             blacky.Deworming = new DateTime(2021, 07, 28);
             blacky.MedicalHistory = new List<Visit> ();
-            blacky.ClinicName = listOfClinics[0].Name;
+            blacky.ClinicName = "Animal";
 
             Dog lucciano = new Dog("LUCCIANO", new DateTime(2015, 12, 24), "Lhasa Apso");
-            lucciano.ClinicName = listOfClinics[1].Name;
+            lucciano.ClinicName = "Kaczor";
 
             Dog kaprys = new Dog("KAPRYS", new DateTime(2016, 02, 01), "Lhasa Apso");
-            kaprys.ClinicName = listOfClinics[1].Name;
+            kaprys.ClinicName = "Kaczor";
 
             listOfDogs.Add(blacky);
             listOfDogs.Add(lucciano);
@@ -64,7 +64,7 @@ namespace KsiazeczkaZdrowia
         public static List<Cat> GetCats()
         {
             Cat diesel = new Cat("DIESEL", new DateTime(2008, 01, 01), "Archangielska");
-            diesel.ClinicName = listOfClinics[1].Name;
+            diesel.ClinicName = "Kaczor";
 
             listOfCats.Add(diesel);
 
@@ -195,28 +195,28 @@ namespace KsiazeczkaZdrowia
             {
                 case "BLACKY":
 
-                    listOfDogs[0].WriteData();
+                    Console.WriteLine(listOfDogs[0].ToString());
                     DogsMenu();
 
                     break;
 
                 case "KAPRYS":
 
-                    listOfDogs[2].WriteData();
+                    Console.WriteLine(listOfDogs[2].ToString());
                     DogsMenu();
 
                     break;
 
                 case "LUCCIANO":
 
-                    listOfDogs[1].WriteData();
+                    Console.WriteLine(listOfDogs[1].ToString());
                     DogsMenu();
 
                     break;
 
                 case "DIESEL":
 
-                    listOfCats[0].WriteData();
+                    Console.WriteLine(listOfCats[0].ToString());
                     CatsMenu();
 
                     break;
@@ -388,14 +388,14 @@ namespace KsiazeczkaZdrowia
                     switch (nameOfClinic)
                     {
                         case "ANIMAL":
-                            
-                            listOfClinics[0].WriteData();
+
+                            Console.WriteLine(listOfClinics[0].ToString());
                             ClinicsMenu();
                             break;
 
                         case "KACZOR":
 
-                            listOfClinics[1].WriteData();
+                            Console.WriteLine(listOfClinics[1].ToString());
                             ClinicsMenu();
                             break;
 

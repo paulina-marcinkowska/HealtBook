@@ -31,6 +31,15 @@ namespace KsiazeczkaZdrowia
         public Clinic() 
         { 
         }
+        public override string ToString()
+        {
+            string currentData = "Nazwa: " + Name + "   " + "Nazwa: " + Address + "   " + "Kontakt: ";
+            foreach(string contact in Contact) 
+            {
+                currentData += string.Format("{0}   ", contact);
+            }
+            return currentData;
+        }
 
         public void WriteData() 
         {
