@@ -40,24 +40,6 @@ namespace KsiazeczkaZdrowia
             }
             return currentData;
         }
-
-        public void WriteData() 
-        {
-            Console.WriteLine("Nazwa: " + Name);
-            Console.WriteLine("Adres: " + Address);
-            foreach(string element in Contact) 
-            {
-                Console.WriteLine(element);
-            }
-            foreach(string element in Service) 
-            {
-                Console.WriteLine(element);
-            }
-            foreach(string element in Doctors) 
-            {
-                Console.WriteLine(element);
-            }
-        }
         public void EditClinicData()
         {
             try
