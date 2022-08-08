@@ -233,16 +233,20 @@ namespace KsiazeczkaZdrowia
 
             do
             {
-                Console.WriteLine($"1. Dodaj wpis do historii choroby {Environment.NewLine} 2.Aktualizuj dane {Environment.NewLine} 0.Powrót");
+                Console.WriteLine($"1. Dodaj wpis do historii choroby {Environment.NewLine} 2.Aktualizuj dane {Environment.NewLine} 3.Pokaż date szczepienia/odrobaczenia {Environment.NewLine} 0.Powrót");
                 choiced = int.Parse(Console.ReadLine());
 
                 if (choiced == 1)
                 {
-                    listOfDogs[0].AddsVisit();
+                    listOfDogs[0].AddVisit();
                 }
                 else if (choiced == 2)
                 {
                     listOfDogs[0].EditDog();
+                }
+                else if (choiced == 3) 
+                {
+                    listOfDogs[0].LastDates();
                 }
                 else if (choiced == 0)
                 {
@@ -262,7 +266,7 @@ namespace KsiazeczkaZdrowia
 
             do
             {
-                Console.WriteLine($"1. Dodaj wpis do historii choroby {Environment.NewLine} 2.Aktualizuj dane {Environment.NewLine} 0.Powrót");
+                Console.WriteLine($"1. Dodaj wpis do historii choroby {Environment.NewLine} 2.Aktualizuj dane {Environment.NewLine} 3.Pokaż date szczepienia/odrobaczenia {Environment.NewLine} 0.Powrót");
                 choiced = int.Parse(Console.ReadLine());
 
                 if (choiced == 1)
@@ -272,6 +276,10 @@ namespace KsiazeczkaZdrowia
                 else if (choiced == 2)
                 {
                     listOfCats[0].EditCat();
+                }
+                else if (choiced == 3) 
+                {
+                    listOfCats[0].LastDates();
                 }
                 else if (choiced == 0)
                 {
@@ -363,12 +371,15 @@ namespace KsiazeczkaZdrowia
         }
         
         private static void NextDates()
-        { 
+        {
+            var nextVisit = medicalHistory.Last();
+            Console.WriteLine("Najbliższa wizyta: " + nextVisit);
+
             Console.WriteLine("Najbliższe szczepienia: ");
             Console.WriteLine("BLACKY " + listOfDogs[0].NextVaccination());
             Console.WriteLine("LUCCIANO " + listOfDogs[1].NextVaccination());
             Console.WriteLine("KAPRYS" + listOfDogs[2].NextVaccination());
-            Console.WriteLine("DIESEL" + listOfCats[0].NextVaccination());
+            Console.WriteLine("DIESEL" + listOfCats[0].NextVaccination());            
 
             HandlingOfMenu();
         }

@@ -29,7 +29,7 @@ namespace KsiazeczkaZdrowia
 
         public override string ToString()
         {
-            string currentData = "Imię: " + Name + "   " + "Rasa: " + Breed + "   " + "Data urodzenia: " + DateOfBirth + "   " + "Waga: " + Weight + "   " + "Odrobaczanie: " + Deworming + "   " + "Klinika: " + ClinicName + "   " + "Historia choroby: ";
+            string currentData = "Imię: " + Name + "   " + "Rasa: " + Breed + "   " + "Data urodzenia: " + DateOfBirth + "   " + "Waga: " + Weight + "   " + "Odrobaczanie: " + Deworming + "   " + "Szczepienie: " + Vaccination + "   " + "Klinika: " + ClinicName + "   " + "Historia choroby: ";
             foreach (Visit element in MedicalHistory)
             {
                 currentData += string.Format("{0}   ", element.Diagnosis);
@@ -67,31 +67,11 @@ namespace KsiazeczkaZdrowia
                 Console.WriteLine(e.Message);
             }
         }
-        
-        public void AddVisit()
+        public void LastDates()
         {
-            try
-            {
-                    Console.WriteLine("Podaj date wizyty: ");
-                    DateTime newDateOfVisit = new DateTime();
-                    newDateOfVisit = DateTime.Parse(Console.ReadLine());
-                    Console.WriteLine("Podaj nazwe kliniki: ");
-                    string newClinic = Console.ReadLine();
-                    Console.WriteLine("Podaj adres kliniki: ");
-                    string newAddress = Console.ReadLine();
-                    Console.WriteLine("Podaj nazwisko lekarza: ");
-                    string newDoctor = Console.ReadLine();
-                    Visit newVisit = new Visit(newClinic, newAddress, newDoctor, newDateOfVisit);
-                    MedicalHistory.Add(newVisit);
-            }
-            
-            catch (Exception e)
-            {
-
-                Console.WriteLine(e.Message);
-            }
+            Console.WriteLine("Ostatnie szczepienie: " + Vaccination);
+            Console.WriteLine("Ostatnie odrobaczanie: " + Deworming);
         }
-        
         public TimeSpan NextVaccination()
         {
             DateTime today = new DateTime();
