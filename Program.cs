@@ -138,9 +138,9 @@ namespace KsiazeczkaZdrowia
                             break;
                     }
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
-                    throw;
+                   throw e;
                 }
             } while (choiced != 0);
         }
@@ -149,13 +149,18 @@ namespace KsiazeczkaZdrowia
         {
             try
             {
+                int lengthDogs = listOfDogs.Count;
                 Console.WriteLine($"Lista pacjentów: {Environment.NewLine} 1.Psy: {Environment.NewLine} 2.Koty: ");
                 int selectedAnimal = int.Parse(Console.ReadLine());
 
                 if (selectedAnimal == 1)
                 {
                     ShowListOfDogs();
-                    Console.WriteLine($"Aby zobaczyć profil pacjenta wpisz jego imię{Environment.NewLine} 0.Powrót");
+                    Console.WriteLine($"Aby zobaczyć profil pacjenta wpisz numer ewidencyjny {Environment.NewLine} 0.Powrót");
+                    for (int i = 0; i <= lengthDogs; i++)
+                    {
+                        Console.WriteLine(i + "IMIĘ: " + listOfDogs[i].Name);
+                    }
                 }
                 else if (selectedAnimal == 2)
                 {
